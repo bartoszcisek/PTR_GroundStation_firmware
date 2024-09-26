@@ -199,7 +199,7 @@ void setup() {
   });
 
   server.begin();
-  OLED_drawString(0, 53, version);
+  OLED_drawString(0, 53,"FW: " + (String)version);
   delay(2000);
 
   OLED_clear();
