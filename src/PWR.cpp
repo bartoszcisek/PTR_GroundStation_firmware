@@ -308,6 +308,9 @@ void PWR_loop(){
     if (!PMU) {
         return;
     }
+    // Read Vbat from AXP
+    vbat = (float)(PMU->getBattVoltage()) / 1000.0f;
+
     if (!pmuInterrupt) {
         return;
     }
@@ -346,8 +349,6 @@ void PWR_loop(){
     }
     // Clear PMU Interrupt Status Register
     PMU->clearIrqStatus();
-
-    vbat = (float)(PMU->getBattVoltage()) / 1000.0f;
 #else
     vbat = Accessories_getVBat();
 #endif
